@@ -154,13 +154,14 @@ function closeModal() {
 filterCourses("All");
 
 
+
 /***********************
-  CALLBACK FORM SUBMIT
+  CALLBACK FORM SUBMIT (API)
 ************************/
 const callbackForm = document.getElementById("callbackForm");
 
-callbackForm.addEventListener("submit", function (e) {
-  e.preventDefault(); // page reload stop
+callbackForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
   const formData = {
     name: callbackForm.name.value.trim(),
@@ -171,13 +172,55 @@ callbackForm.addEventListener("submit", function (e) {
     interest: callbackForm.interest.value
   };
 
-  console.log("Callback Form Data:", formData);
+  try {
+    const response = await fetch("http://localhost:5000/api/callback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
 
-  // TEMP: success feedback
-  alert("Thank you! We will contact you shortly.");
+    const result = await response.json();
 
-  callbackForm.reset();
+    if (result.success) {
+      alert("Thank you! Our team will contact you shortly.");
+      callbackForm.reset();
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Server error. Please try later.");
+  }
 });
+
+
+
+/***********************
+  CALLBACK FORM SUBMIT
+************************/
+// const callbackForm = document.getElementById("callbackForm");
+
+// callbackForm.addEventListener("submit", function (e) {
+//   e.preventDefault(); // page reload stop
+
+//   const formData = {
+//     name: callbackForm.name.value.trim(),
+//     email: callbackForm.email.value.trim(),
+//     phone: callbackForm.phone.value.trim(),
+//     college: callbackForm.college.value.trim(),
+//     degree: callbackForm.degree.value,
+//     interest: callbackForm.interest.value
+//   };
+
+//   console.log("Callback Form Data:", formData);
+
+//   // TEMP: success feedback
+//   alert("Thank you! We will contact you shortly.");
+
+//   callbackForm.reset();
+// });
 
 
 
