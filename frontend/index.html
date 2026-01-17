@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+        <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Config -->
+    <script>
+    tailwind.config = {
+        theme: {
+        extend: {
+            colors: {
+            primary: '#2D3142',
+            secondary: '#4F5D75',
+            muted: '#BFC0C0',
+            accent: '#EF8354',
+            },
+            fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Poppins', 'sans-serif'],
+            },
+        },
+        },
+    }
+    </script>
+
+    <style>
+        .filter-pill {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid #bfc0c0;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #2d3142;
+            background: #ffffff;
+            transition: all 0.25s ease;
+        }
+
+        .filter-pill:hover {
+            background: #ef8354;
+            color: #ffffff;
+            border-color: #ef8354;
+        }
+
+        .filter-pill.active {
+            background: #ef8354;
+            color: #ffffff;
+            border-color: #ef8354;
+        }
+    </style>
+
+
+</head>
+<body class="font-body bg-white text-primary">
+
+<header class="bg-primary text-white sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <div class="font-heading text-xl font-bold">
+      Code Institute
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex gap-8 font-body text-sm">
+      <li class="hover:text-accent cursor-pointer">Home</li>
+      <li class="hover:text-accent cursor-pointer">Categories</li>
+      <li class="hover:text-accent cursor-pointer">Courses</li>
+      <li class="hover:text-accent cursor-pointer">Instructors</li>
+      <li class="hover:text-accent cursor-pointer">Contact</li>
+    </ul>
+
+    <!-- CTA (Desktop) -->
+    <button class="hidden md:block bg-accent px-5 py-2 rounded-md font-heading text-sm font-semibold hover:opacity-90">
+      Request Callback
+    </button>
+
+    <!-- Hamburger Button (Mobile) -->
+    <button id="menuBtn" class="md:hidden text-2xl">
+      ☰
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-primary px-6 pb-4">
+    <ul class="flex flex-col gap-4 font-body text-sm">
+      <li class="hover:text-accent">Home</li>
+      <li class="hover:text-accent">Categories</li>
+      <li class="hover:text-accent">Courses</li>
+      <li class="hover:text-accent">Instructors</li>
+      <li class="hover:text-accent">Contact</li>
+      <button class="mt-4 bg-accent py-2 rounded-md font-heading font-semibold">
+        Request Callback
+      </button>
+    </ul>
+  </div>
+</header>
+
+
+<section class="relative bg-white pt-24 min-h-screen pb-0 overflow-hidden">
+
+  <!-- Background SVG -->
+  <div class="absolute inset-x-0 bottom-0 z-0 pointer-events-none flex justify-center">
+    <img
+      src="./assets/grid.svg"
+      alt="hero background"
+      class="w-[120%] h-72 object-cover opacity-90"
+    />
+  </div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+    
+    <!-- Left -->
+    <div>
+      <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6 leading-tight text-primary">
+        Build Your Career with
+        <span class="text-accent block mt-1">CareerCoded</span>
+      </h1>
+
+      <p class="text-muted mb-10 max-w-lg leading-relaxed">
+        Learn job-oriented skills with expert mentors and
+        <span class="font-medium text-primary"> 3 months job assistance</span>.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <!-- Primary Button -->
+        <button
+          class="bg-accent text-white px-7 py-3 rounded-md font-semibold
+                 transition-all duration-300 ease-in-out
+                 hover:bg-[#e76f3c] hover:shadow-lg hover:-translate-y-0.5"
+        >
+          Explore Courses
+        </button>
+
+        <!-- Secondary Button -->
+        <button
+          class="border border-primary text-primary px-7 py-3 rounded-md font-semibold
+                 transition-all duration-300 ease-in-out
+                 hover:bg-primary hover:text-white hover:shadow-md"
+        >
+          Request Callback
+        </button>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="flex justify-center mt-10 md:mt-0">
+      <div
+        class="w-60 h-60 md:w-96 md:h-96 bg-secondary/20 rounded-2xl
+               flex items-center justify-center text-muted
+               transition-all duration-300
+               hover:shadow-xl hover:-translate-y-1"
+      >
+        Hero Image
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- COURSES SECTION -->
+<section id="courses" class="bg-secondary/10 py-24">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-8">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-3">
+        Our Courses
+      </h2>
+      <p class="text-muted max-w-xl mx-auto">
+        Industry-oriented programs designed to make you job-ready.
+      </p>
+    </div>
+
+    <!-- FILTER + SEARCH BAR -->
+<div class="flex flex-wrap justify-center items-center gap-3 mb-14">
+
+  <!-- FILTER PILLS -->
+  <div class="flex flex-wrap gap-3 justify-center">
+    <button
+      class="filter-pill active"
+      data-category="All"
+      onclick="filterCourses('All')"
+    >
+      All
+    </button>
+
+    <button
+      class="filter-pill"
+      data-category="Web Development"
+      onclick="filterCourses('Web Development')"
+    >
+      Web Development
+    </button>
+
+    <button
+      class="filter-pill"
+      data-category="Backend Development"
+      onclick="filterCourses('Backend Development')"
+    >
+      Backend
+    </button>
+
+    <button
+      class="filter-pill"
+      data-category="Programming"
+      onclick="filterCourses('Programming')"
+    >
+      DSA
+    </button>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <input
+    type="text"
+    id="courseSearch"
+    placeholder="Search courses..."
+    class="w-64 px-4 py-2.5 rounded-md border border-muted/40
+           focus:outline-none focus:border-accent"
+  />
+
+</div>
+
+
+    <!-- Dynamic Courses Grid -->
+    <div
+      id="coursesContainer"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10"
+    ></div>
+
+  </div>
+</section>
+
+
+<!-- REQUEST CALLBACK SECTION -->
+<section id="callback" class="bg-secondary/5 py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        Request a Callback
+      </h2>
+      <p class="text-muted max-w-xl mx-auto leading-relaxed">
+        Share your details and our academic counsellor will connect with you
+        to guide you towards the right career path.
+      </p>
+    </div>
+
+    <!-- Form Card -->
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-10 border border-muted/20">
+
+      <form id="callbackForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Full Name -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">
+            Full Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your full name"
+            class="w-full px-4 py-3 rounded-md border border-muted/40
+                   focus:outline-none focus:border-accent"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">
+            Email Address
+          </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            class="w-full px-4 py-3 rounded-md border border-muted/40
+                   focus:outline-none focus:border-accent"
+          />
+        </div>
+
+        <!-- Phone Number (NEW) -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Enter your phone number"
+            class="w-full px-4 py-3 rounded-md border border-muted/40
+                   focus:outline-none focus:border-accent"
+          />
+        </div>
+
+        <!-- College -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">
+            College Name
+          </label>
+          <input
+            type="text"
+            name="college"
+            placeholder="Your college name"
+            class="w-full px-4 py-3 rounded-md border border-muted/40
+                   focus:outline-none focus:border-accent"
+          />
+        </div>
+
+        <!-- Degree -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">
+            Degree
+          </label>
+          <select
+            name="degree"
+            class="w-full px-4 py-3 rounded-md border border-muted/40 bg-white
+                   focus:outline-none focus:border-accent"
+          >
+            <option value="">Select Degree</option>
+            <option>B.Tech</option>
+            <option>BCA</option>
+            <option>B.Sc</option>
+            <option>MCA</option>
+            <option>M.Tech</option>
+            <option>Diploma</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- Course Interest -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">
+            Course Interested In
+          </label>
+          <select
+            name="interest"
+            class="w-full px-4 py-3 rounded-md border border-muted/40 bg-white
+                   focus:outline-none focus:border-accent"
+          >
+            <option value="">Select Course</option>
+            <option>Full Stack Web Development</option>
+            <option>Backend Development</option>
+            <option>DSA & Problem Solving</option>
+            <option>Data Analytics</option>
+            <option>Not Sure (Need Guidance)</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="md:col-span-2 mt-4">
+          <button
+            type="submit"
+            class="w-full bg-accent text-white py-3 rounded-md font-semibold
+                   transition-all duration-300
+                   hover:opacity-90 hover:shadow-lg"
+          >
+            Request Callback
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="callback">
+  <h2>Request a Callback</h2>
+
+  <form>
+    <input type="text" placeholder="Name" />
+    <input type="email" placeholder="Email" />
+    <input type="text" placeholder="College Name" />
+    <input type="text" placeholder="Degree" />
+    <input type="text" placeholder="Course Interest" />
+
+    <button type="submit">Request Callback</button>
+  </form>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- COURSE DETAILS MODAL -->
+<div
+  id="courseModal"
+  class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50"
+>
+  <div class="bg-white max-w-2xl w-full mx-4 rounded-2xl overflow-hidden">
+
+    <!-- Header -->
+    <div class="bg-primary text-white px-6 py-4 flex justify-between items-center">
+      <h3 id="modalTitle" class="font-heading text-xl font-bold"></h3>
+      <button onclick="closeModal()" class="text-2xl">×</button>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 grid md:grid-cols-2 gap-6">
+
+      <!-- Left Info -->
+      <div>
+        <p class="text-muted mb-4" id="modalDescription"></p>
+
+        <ul class="space-y-2 text-sm">
+          <li><strong>Duration:</strong> <span id="modalDuration"></span></li>
+          <li><strong>Fees:</strong> <span id="modalFees"></span></li>
+          <li><strong>Level:</strong> <span id="modalLevel"></span></li>
+          <li><strong>Placement:</strong> <span id="modalPlacement"></span></li>
+          <li><strong>Trainers:</strong> <span id="modalTrainers"></span></li>
+        </ul>
+      </div>
+
+      <!-- Right Highlights -->
+      <div>
+        <h4 class="font-heading font-semibold mb-3">What you will learn</h4>
+        <ul id="modalHighlights" class="list-disc list-inside text-sm text-muted space-y-1"></ul>
+
+        <button
+          class="mt-6 w-full bg-accent text-white py-3 rounded-md font-semibold hover:opacity-90"
+        >
+          Enroll Now
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+</html>
