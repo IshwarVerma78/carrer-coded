@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import Callback from "./models/Callback.js";
+import Visitor from "./models/Visitor.js";
 
 dotenv.config();
 
@@ -44,23 +45,32 @@ app.post("/api/callback", async (req, res) => {
   }
 });
 
+// API: Get + Increment visitor count
 
-// app.post("/api/callback", async (req, res) => {
-//   try {
-//     const callback = new Callback(req.body);
-//     await callback.save();
+app.get("/api/visitor", async (req, res) => {
+  try {
+    let visitor = await Visitor.findOne();
 
-//     res.status(201).json({
-//       success: true,
-//       message: "Callback request saved successfully"
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: "Failed to save callback request"
-//     });
-//   }
-// });
+    if (!visitor) {
+      visitor = await Visitor.create({ count: 1 });
+    } else {
+      visitor.count += 1;
+      await visitor.save();
+    }
+
+    res.status(200).json({
+      success: true,
+      count: visitor.count
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Visitor count failed"
+    });
+  }
+});
+
+
 
 // Start server
 app.listen(PORT, () => {

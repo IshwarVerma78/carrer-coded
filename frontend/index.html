@@ -58,29 +58,36 @@
 
 
 </head>
-<body class="font-body bg-white text-primary">
+<body class="font-body bg-white text-primary scroll-smooth">
 
 <header class="bg-primary text-white sticky top-0 z-50">
   <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
     <!-- Logo -->
     <div class="font-heading text-xl font-bold">
-      Code Institute
+      <a href="#home">
+        CareerCoded
+      </a>
     </div>
 
     <!-- Desktop Menu -->
     <ul class="hidden md:flex gap-8 font-body text-sm">
-      <li class="hover:text-accent cursor-pointer">Home</li>
+      <!-- <li class="hover:text-accent cursor-pointer">Home</li>
       <li class="hover:text-accent cursor-pointer">Categories</li>
       <li class="hover:text-accent cursor-pointer">Courses</li>
       <li class="hover:text-accent cursor-pointer">Instructors</li>
-      <li class="hover:text-accent cursor-pointer">Contact</li>
+      <li class="hover:text-accent cursor-pointer">Contact</li> -->
+      <li><a href="#home" class="hover:text-accent cursor-pointer">Home</a></li>
+      <li><a href="#why-us" class="hover:text-accent cursor-pointer">Categories</a></li>
+      <li><a href="#courses" class="hover:text-accent cursor-pointer">Courses</a></li>
+      <li><a href="#instructors" class="hover:text-accent cursor-pointer">Instructors</a></li>
+      <li><a href="#contact" class="hover:text-accent cursor-pointer">Contact</a></li>
     </ul>
 
     <!-- CTA (Desktop) -->
-    <button class="hidden md:block bg-accent px-5 py-2 rounded-md font-heading text-sm font-semibold hover:opacity-90">
+    <a href="#callback" class="hidden md:block bg-accent px-5 py-2 rounded-md font-heading text-sm font-semibold hover:opacity-90">
       Request Callback
-    </button>
+    </a>
 
     <!-- Hamburger Button (Mobile) -->
     <button id="menuBtn" class="md:hidden text-2xl">
@@ -91,20 +98,20 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="hidden md:hidden bg-primary px-6 pb-4">
     <ul class="flex flex-col gap-4 font-body text-sm">
-      <li class="hover:text-accent">Home</li>
-      <li class="hover:text-accent">Categories</li>
-      <li class="hover:text-accent">Courses</li>
-      <li class="hover:text-accent">Instructors</li>
-      <li class="hover:text-accent">Contact</li>
-      <button class="mt-4 bg-accent py-2 rounded-md font-heading font-semibold">
+      <li><a href="#home" class="hover:text-accent">Home</a></li>
+      <li><a href="#why-us" class="hover:text-accent">Categories</a></li>
+      <li><a href="#courses" class="hover:text-accent">Courses</a></li>
+      <li><a href="#instructors" class="hover:text-accent">Instructors</a></li>
+      <li><a href="#contact" class="hover:text-accent">Contact</a></li>
+      <a href="#callback" class="mt-4 bg-accent py-2 rounded-md font-heading font-semibold text-center">
         Request Callback
-      </button>
+      </a>
     </ul>
   </div>
 </header>
 
 
-<section class="relative bg-white pt-24 min-h-screen pb-0 overflow-hidden">
+<section id="home" class="relative bg-white pt-24 min-h-screen pb-0 overflow-hidden">
 
   <!-- Background SVG -->
   <div class="absolute inset-x-0 bottom-0 z-0 pointer-events-none flex justify-center">
@@ -376,40 +383,363 @@
   </div>
 </section>
 
+<!-- WHY JOIN US -->
+<section id="why-us" class="bg-white py-28">
+  <div class="max-w-7xl mx-auto px-6">
 
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        Why Join Us
+      </h2>
+      <p class="text-muted max-w-xl mx-auto">
+        Everything we do is focused on making you industry-ready.
+      </p>
+    </div>
 
+    <!-- Cards Container -->
+    <div
+      id="whyContainer"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10"
+    ></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section id="callback">
-  <h2>Request a Callback</h2>
-
-  <form>
-    <input type="text" placeholder="Name" />
-    <input type="email" placeholder="Email" />
-    <input type="text" placeholder="College Name" />
-    <input type="text" placeholder="Degree" />
-    <input type="text" placeholder="Course Interest" />
-
-    <button type="submit">Request Callback</button>
-  </form>
+  </div>
 </section>
+
+
+
+<!-- INSTRUCTORS SECTION -->
+<section id="instructors" class="bg-secondary/5 py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        Meet Our Instructors
+      </h2>
+      <p class="text-muted max-w-xl mx-auto">
+        Learn from professionals who are actively working in the industry.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div
+      id="instructorsContainer"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10"
+    ></div>
+
+  </div>
+</section>
+
+
+<!-- Upcomming Batches -->
+
+<section id="batches" class="bg-secondary/5 py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        Upcoming Batches
+      </h2>
+      <p class="text-muted max-w-xl mx-auto">
+        Choose the right program and start your career journey with us.
+      </p>
+    </div>
+
+    <div
+      id="batchesContainer"
+      class="grid grid-cols-1 md:grid-cols-2 gap-10"
+    ></div>
+
+  </div>
+</section>
+
+
+<!-- CONTACT US SECTION -->
+
+<!-- CONTACT US – ULTRA PREMIUM -->
+<section id="contact" class="relative bg-white py-36 overflow-hidden">
+  
+  <!-- Subtle Background Accent -->
+  <div class="absolute -top-40 -right-40 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+
+      <!-- LEFT CONTENT -->
+      <div>
+        <p class="text-accent font-semibold tracking-wide mb-4">
+          CONTACT US
+        </p>
+
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-primary leading-tight mb-8">
+          Let’s Build Your <br />
+          <span class="text-accent">Career Together</span>
+        </h2>
+
+        <p class="text-muted max-w-lg mb-12 leading-relaxed">
+          Whether you’re confused about choosing the right course,
+          upcoming batches, or career guidance — our experts are just
+          one step away from helping you.
+        </p>
+
+        <!-- INFO LIST -->
+        <div class="space-y-8 text-sm">
+
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-primary">
+              📍
+            </div>
+            <p>
+              <strong class="block mb-1">Office Address</strong>
+              CareerCoded Institute,<br />
+              Sector 62, Noida, Uttar Pradesh
+            </p>
+          </div>
+
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-primary">
+              📞
+            </div>
+            <p>
+              <strong class="block mb-1">Call Us</strong>
+              +91 98765 43210<br />
+              Mon – Sat (10 AM – 7 PM)
+            </p>
+          </div>
+
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-primary">
+              📧
+            </div>
+            <p>
+              <strong class="block mb-1">Email</strong>
+              support@careercoded.in<br />
+              info@careercoded.in
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT CTA PANEL -->
+      <div class="relative">
+        <div class="bg-white rounded-3xl border border-muted/30 shadow-2xl p-12">
+
+          <h3 class="font-heading text-2xl font-semibold text-primary mb-4">
+            Ready to Take the Next Step?
+          </h3>
+
+          <p class="text-sm text-muted mb-10 leading-relaxed">
+            Start with a quick callback request or directly connect
+            with our academic counsellors.
+          </p>
+
+          <div class="flex flex-col gap-4">
+          <a
+            href="#callback"
+            class="inline-flex justify-center items-center
+                   bg-accent text-white py-3 rounded-md font-semibold
+                   hover:opacity-90 transition"
+          >
+            Request a Callback
+          </a>
+
+          <a
+            href="mailto:support@careercoded.in"
+            class="inline-flex justify-center items-center
+                   border border-primary text-primary py-3 rounded-md
+                   font-semibold hover:bg-primary hover:text-white transition"
+          >
+            Email Our Team
+          </a>
+        </div>
+
+          
+
+          <p class="text-xs text-muted text-center mt-8">
+            We usually respond within a few hours.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER – ULTRA ELITE -->
+<footer class="relative bg-primary text-white pt-28 overflow-hidden">
+
+  <!-- Subtle Gradient Glow -->
+  <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-accent/10 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+
+    <!-- TOP BRAND AREA -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-24">
+
+      <!-- BRAND STORY -->
+      <div>
+        <h3 class="font-heading text-3xl font-bold mb-6">
+          CareerCoded
+        </h3>
+
+        <p class="text-white/70 max-w-lg leading-relaxed text-lg">
+          CareerCoded is a career-focused tech education platform helping
+          students and professionals build real-world skills, work on
+          industry-grade projects, and secure job opportunities with confidence.
+        </p>
+
+        <!-- SOCIALS -->
+        <div class="flex gap-5 mt-10">
+          <a class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center hover:bg-accent transition">in</a>
+          <a class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center hover:bg-accent transition">ig</a>
+          <a class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center hover:bg-accent transition">yt</a>
+          <a class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center hover:bg-accent transition">tw</a>
+        </div>
+      </div>
+
+      <!-- CTA BLOCK -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-12 backdrop-blur">
+        <h4 class="font-heading text-2xl font-semibold mb-4">
+          Start Your Career Journey
+        </h4>
+
+        <p class="text-white/70 mb-8 leading-relaxed">
+          Unsure which course fits you best?  
+          Talk to our experts and get a personalized roadmap.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#callback"
+            class="flex-1 text-center bg-accent text-white py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition"
+          >
+            Request Callback
+          </a>
+
+          <a
+            href="#courses"
+            class="flex-1 text-center border border-white/30 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-primary transition"
+          >
+            Explore Courses
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LINKS GRID -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 pb-20 border-t border-white/10 pt-16">
+
+      <div>
+        <h5 class="font-heading font-semibold mb-5">Programs</h5>
+        <ul class="space-y-3 text-white/60">
+          <li>Full Stack Development</li>
+          <li>Backend Engineering</li>
+          <li>DSA & Problem Solving</li>
+          <li>Data Analytics</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-heading font-semibold mb-5">Company</h5>
+        <ul class="space-y-3 text-white/60">
+          <li>About Us</li>
+          <li>Why CareerCoded</li>
+          <li>Instructors</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-heading font-semibold mb-5">Resources</h5>
+        <ul class="space-y-3 text-white/60">
+          <li>Student Reviews</li>
+          <li>Placement Support</li>
+          <li>Blog</li>
+          <li>FAQs</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-heading font-semibold mb-5">Contact</h5>
+        <ul class="space-y-3 text-white/60">
+          <li>Noida, Uttar Pradesh</li>
+          <li>+91 98765 43210</li>
+          <li>support@careercoded.in</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="py-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/50">
+      <p>© 2026 CareerCoded. Crafted with care.</p>
+
+      <div class="flex gap-8 mt-4 md:mt-0">
+        <a href="#" class="hover:text-accent transition">Privacy Policy</a>
+        <a href="#" class="hover:text-accent transition">Terms</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Visitor count -->
+
+<p class="text-sm text-muted text-center mt-6">
+  👥 Total Visitors:
+  <span id="visitorCount" class="font-semibold text-primary">--</span>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -470,11 +800,19 @@
         <h4 class="font-heading font-semibold mb-3">What you will learn</h4>
         <ul id="modalHighlights" class="list-disc list-inside text-sm text-muted space-y-1"></ul>
 
+        <!-- <a href="#callback">
+          <button class="mt-6 w-full bg-accent text-white py-3 rounded-md font-semibold hover:opacity-90">
+            Enroll Now
+          </button>
+        </a> -->
+
         <button
+          onclick="handleEnrollClick()"
           class="mt-6 w-full bg-accent text-white py-3 rounded-md font-semibold hover:opacity-90"
         >
           Enroll Now
         </button>
+
       </div>
 
     </div>
@@ -484,6 +822,9 @@
 
 
 <script src="data.js"></script>
+<script src="whydata.js"></script>
+<script src="instructorsData.js"></script>
+<script src="batchesData.js"></script>
 <script src="script.js"></script>
 
 

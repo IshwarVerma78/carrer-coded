@@ -148,6 +148,18 @@ function closeModal() {
   modal.classList.remove("flex");
 }
 
+function handleEnrollClick() {
+  // 1. Close modal
+  closeModal();
+
+  // 2. Smooth scroll to callback section
+  const callbackSection = document.getElementById("callback");
+  if (callbackSection) {
+    callbackSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+
 /***********************
   INITIAL LOAD
 ************************/
@@ -196,41 +208,205 @@ callbackForm.addEventListener("submit", async function (e) {
 });
 
 
+/***********************
+  VISITOR COUNTER
+************************/
+async function loadVisitorCount() {
+  try {
+    const response = await fetch("http://localhost:5000/api/visitor");
+    const data = await response.json();
+
+    if (data.success) {
+      document.getElementById("visitorCount").innerText = data.count;
+    }
+  } catch (error) {
+    console.error("Visitor count error:", error);
+  }
+}
+
+// Page load
+loadVisitorCount();
+
+
 
 /***********************
-  CALLBACK FORM SUBMIT
+  WHY JOIN US RENDER (COURSE STYLE)
 ************************/
-// const callbackForm = document.getElementById("callbackForm");
+const whyContainer = document.getElementById("whyContainer");
 
-// callbackForm.addEventListener("submit", function (e) {
-//   e.preventDefault(); // page reload stop
+whyData.forEach(item => {
+  const card = document.createElement("div");
 
-//   const formData = {
-//     name: callbackForm.name.value.trim(),
-//     email: callbackForm.email.value.trim(),
-//     phone: callbackForm.phone.value.trim(),
-//     college: callbackForm.college.value.trim(),
-//     degree: callbackForm.degree.value,
-//     interest: callbackForm.interest.value
-//   };
+  card.className = `
+    bg-white rounded-2xl overflow-hidden
+    border border-muted/30
+    transition-all duration-300
+    hover:-translate-y-1 hover:shadow-xl hover:border-accent
+  `;
 
-//   console.log("Callback Form Data:", formData);
+  card.innerHTML = `
+    <!-- Image -->
+    <img
+      src="${item.image}"
+      alt="${item.title}"
+      class="w-full h-40 object-cover"
+    />
 
-//   // TEMP: success feedback
-//   alert("Thank you! We will contact you shortly.");
+    <!-- Content -->
+    <div class="p-6">
+      <h3 class="font-heading text-lg font-semibold mb-3">
+        ${item.title}
+      </h3>
 
-//   callbackForm.reset();
-// });
+      <p class="text-sm text-primary mb-4">
+        ${item.description}
+      </p>
+
+      <ul class="text-sm text-secondary space-y-1">
+        ${item.points.map(p => `<li>✔ ${p}</li>`).join("")}
+      </ul>
+    </div>
+  `;
+
+  whyContainer.appendChild(card);
+});
 
 
+/***********************
+  INSTRUCTORS RENDER
+************************/
+const instructorsContainer = document.getElementById("instructorsContainer");
+
+instructorsData.forEach(inst => {
+  const card = document.createElement("div");
+
+  card.className = `
+    bg-white rounded-2xl overflow-hidden
+    border border-muted/30
+    transition-all duration-300
+    hover:-translate-y-1 hover:shadow-xl hover:border-accent
+  `;
+
+  card.innerHTML = `
+    <!-- Image -->
+    <img
+      src="${inst.image}"
+      alt="${inst.name}"
+      class="w-full h-48 object-contain bg-secondary/10"
+    />
+
+    <!-- Content -->
+    <div class="p-6">
+      <h3 class="font-heading text-xl font-semibold mb-1">
+        ${inst.name}
+      </h3>
+
+      <p class="text-sm text-accent font-medium mb-2">
+        ${inst.role}
+      </p>
+
+      <p class="text-sm text-muted mb-3">
+        ${inst.experience}
+      </p>
+
+      <p class="text-sm text-muted mb-4">
+        ${inst.bio}
+      </p>
+
+      <div class="flex flex-wrap gap-2">
+        ${inst.expertise
+          .map(
+            skill => `
+          <span class="text-xs px-3 py-1 bg-secondary/20 rounded-full text-primary">
+            ${skill}
+          </span>`
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+
+  instructorsContainer.appendChild(card);
+});
 
 
+/***********************
+  PREMIUM BATCH CARDS
+************************/
+const batchesContainer = document.getElementById("batchesContainer");
 
+batchesData.forEach(batch => {
+  const card = document.createElement("div");
 
+  card.className = `
+    bg-white rounded-2xl overflow-hidden
+    border border-muted/30
+    transition-all duration-300
+    hover:shadow-2xl hover:-translate-y-1
+  `;
 
+  card.innerHTML = `
+    <!-- TOP IMAGE AREA -->
+    <div class="relative bg-secondary/10 p-6">
+      <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full">
+        ${batch.badge}
+      </span>
 
+     
 
+      <h3 class="font-heading text-xl font-semibold text-primary mb-2">
+        ${batch.title}
+      </h3>
 
+      <p class="text-sm text-primary/80">
+        ${batch.description}
+      </p>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="p-6 space-y-4 text-sm">
+
+      <div class="flex items-start gap-3">
+        <span>🎓</span>
+        <p>${batch.eligibility}</p>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <span>📅</span>
+        <p><strong>Next Batch:</strong> ${batch.startDate}</p>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <span>⏳</span>
+        <p><strong>Duration:</strong> ${batch.duration}</p>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <span>💻</span>
+        <p><strong>Mode:</strong> ${batch.mode}</p>
+      </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="p-6 flex gap-4">
+      <a
+        href="${batch.brochure}"
+        class="flex-1 text-center border border-primary text-primary py-2 rounded-md font-medium hover:bg-primary hover:text-white transition"
+      >
+        Download Brochure
+      </a>
+
+      <button
+        class="flex-1 bg-accent text-white py-2 rounded-md font-semibold hover:opacity-90 transition"
+      >
+        ${batch.cta}
+      </button>
+    </div>
+  `;
+
+  batchesContainer.appendChild(card);
+});
 
 
 

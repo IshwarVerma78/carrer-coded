@@ -86,5 +86,48 @@ const coursesData = [
       "Time & Space Complexity",
       "Interview Questions Practice"
     ]
+  },
+  {
+    id: "dsa-foundation",
+    title: "DSA & Problem Solving",
+    category: "Programming",
+    image: "./assets/da.svg",
+    shortDesc: "Data Structures & Algorithms",
+    duration: "2.5 Months",
+    fees: "₹25,000",
+    level: "All Levels",
+    placement: "Interview Preparation",
+    trainers: "Top Competitive Programmers",
+    description:
+      "Strengthen your problem-solving skills and crack technical interviews with structured DSA training.",
+    highlights: [
+      "Arrays, Strings, Recursion",
+      "Linked List & Trees",
+      "Sorting & Searching",
+      "Time & Space Complexity",
+      "Interview Questions Practice"
+    ]
+  },
+
+  {
+    id: "dsa-foundation",
+    title: "DSA & Problem Solving",
+    category: "Programming",
+    image: "./assets/da.svg",
+    shortDesc: "Data Structures & Algorithms",
+    duration: "2.5 Months",
+    fees: "₹25,000",
+    level: "All Levels",
+    placement: "Interview Preparation",
+    trainers: "Top Competitive Programmers",
+    description:
+      "Strengthen your problem-solving skills and crack technical interviews with structured DSA training.",
+    highlights: [
+      "Arrays, Strings, Recursion",
+      "Linked List & Trees",
+      "Sorting & Searching",
+      "Time & Space Complexity",
+      "Interview Questions Practice"
+    ]
   }
 ];
