@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareerCoded Admin</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+      <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Config -->
+    <script>
+    tailwind.config = {
+        theme: {
+        extend: {
+            colors: {
+            primary: '#2D3142',
+            secondary: '#4F5D75',
+            muted: '#BFC0C0',
+            accent: '#EF8354',
+            },
+            fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Poppins', 'sans-serif'],
+            },
+        },
+        },
+    }
+    </script>
+
+    <style>
+        .filter-pill {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid #bfc0c0;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #2d3142;
+            background: #ffffff;
+            transition: all 0.25s ease;
+        }
+
+        .filter-pill:hover {
+            background: #ef8354;
+            color: #ffffff;
+            border-color: #ef8354;
+        }
+
+        .filter-pill.active {
+            background: #ef8354;
+            color: #ffffff;
+            border-color: #ef8354;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-100 text-primary min-h-screen font-body">
+
+ <header class="bg-primary text-white h-16 flex items-center shadow-lg">
+  <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+
+    <!-- Brand -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center font-bold">
+        C
+      </div>
+      <h1 class="font-heading text-lg font-semibold tracking-wide">
+        CareerCoded <span class="text-accent">Admin</span>
+      </h1>
+    </div>
+
+    <!-- Right -->
+    <div class="flex items-center gap-6">
+      <span class="text-sm text-white/70">
+        Dashboard
+      </span>
+
+      <button
+        onclick="logoutAdmin()"
+        class="text-sm px-4 py-2 rounded-md border border-white/20
+               hover:bg-white hover:text-primary transition"
+      >
+        Logout
+      </button>
+    </div>
+
+  </div>
+</header>
+
+  <!-- MAIN -->
+  <main class="max-w-7xl mx-auto px-6 py-10 space-y-12">
+
+<!-- STATS -->
+<section class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+  <!-- Card -->
+  <div class="bg-white rounded-2xl p-6 shadow-sm border border-muted/30 hover:shadow-md transition">
+    <p class="text-sm text-muted mb-1">Total Callbacks</p>
+    <h3 id="totalCallbacks" class="text-3xl font-bold">0</h3>
+  </div>
+
+  <div class="bg-white rounded-2xl p-6 shadow-sm border border-muted/30 hover:shadow-md transition">
+    <p class="text-sm text-muted mb-1">Today’s Requests</p>
+    <h3 id="todayCallbacks" class="text-3xl font-bold">0</h3>
+  </div>
+
+  <div class="bg-white rounded-2xl p-6 shadow-sm border border-muted/30 hover:shadow-md transition">
+    <p class="text-sm text-muted mb-1">Visitors</p>
+    <h3 id="visitorCount" class="text-3xl font-bold">0</h3>
+  </div>
+
+</section>
+
+    <!-- CALLBACK TABLE -->
+<section class="bg-white rounded-2xl shadow-sm border border-muted/30 overflow-hidden">
+
+  <!-- Table Header -->
+  <div class="px-6 py-4 border-b flex justify-between items-center">
+    <h2 class="font-heading text-lg font-semibold">
+      Callback Requests
+    </h2>
+  </div>
+
+  <!-- Table -->
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="bg-secondary/10 text-left">
+        <tr>
+          <th class="px-6 py-3 font-medium">Name</th>
+          <th class="px-6 py-3 font-medium">Email</th>
+          <th class="px-6 py-3 font-medium">Phone</th>
+          <th class="px-6 py-3 font-medium">College</th>
+          <th class="px-6 py-3 font-medium">Degree</th>
+          <th class="px-6 py-3 font-medium">Course</th>
+          <th class="px-6 py-3 font-medium">Date</th>
+          <th class="px-6 py-3 font-medium">Action</th>
+        </tr>
+      </thead>
+
+      <tbody
+        id="callbackTable"
+        class="divide-y text-sm"
+      >
+        <!-- JS rows -->
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+  </main>
+
+  <script src="./admin.js"></script>
+</body>
+</html>

@@ -47,7 +47,32 @@ app.post("/api/callback", async (req, res) => {
 
 // API: Get + Increment visitor count
 
-app.get("/api/visitor", async (req, res) => {
+// app.get("/api/visitor", async (req, res) => {
+//   try {
+//     let visitor = await Visitor.findOne();
+
+//     if (!visitor) {
+//       visitor = await Visitor.create({ count: 1 });
+//     } else {
+//       visitor.count += 1;
+//       await visitor.save();
+//     }
+
+//     res.status(200).json({
+//       success: true,
+//       count: visitor.count
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: "Visitor count failed"
+//     });
+//   }
+// });
+
+
+// Increment visitor count (Frontend)
+app.post("/api/visitor", async (req, res) => {
   try {
     let visitor = await Visitor.findOne();
 
@@ -58,14 +83,82 @@ app.get("/api/visitor", async (req, res) => {
       await visitor.save();
     }
 
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false });
+  }
+});
+
+// Get visitor count (Admin)
+app.get("/api/visitor", async (req, res) => {
+  try {
+    const visitor = await Visitor.findOne();
+
     res.status(200).json({
       success: true,
-      count: visitor.count
+      count: visitor ? visitor.count : 0
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "Visitor count failed"
+      message: "Failed to fetch visitor count"
+    });
+  }
+});
+
+
+// ADMIN: delete a callback
+app.delete("/api/callbacks/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Callback.findByIdAndDelete(id);
+
+    res.json({
+      success: true,
+      message: "Callback deleted successfully"
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete callback"
+    });
+  }
+});
+
+
+
+// ADMIN: get all callbacks
+app.get("/api/callbacks", async (req, res) => {
+  try {
+    const callbacks = await Callback.find().sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      data: callbacks
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch callbacks"
+    });
+  }
+});
+
+
+// ADMIN LOGIN
+app.post("/api/admin/login", (req, res) => {
+  const { password } = req.body;
+
+  if (password === process.env.ADMIN_PASSWORD) {
+    res.json({
+      success: true,
+      message: "Login successful"
+    });
+  } else {
+    res.status(401).json({
+      success: false,
+      message: "Invalid password"
     });
   }
 });

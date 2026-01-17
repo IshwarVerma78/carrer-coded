@@ -213,7 +213,7 @@ callbackForm.addEventListener("submit", async function (e) {
 ************************/
 async function loadVisitorCount() {
   try {
-    const response = await fetch("http://localhost:5000/api/visitor");
+    const response = await fetch("http://localhost:5000/api/visitor", {method: "POST"});
     const data = await response.json();
 
     if (data.success) {

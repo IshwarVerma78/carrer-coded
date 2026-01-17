@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-secondary/10 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-sm">
+    <h2 class="font-heading text-2xl font-bold text-center mb-6">
+      Admin Login
+    </h2>
+
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Enter admin password"
+      class="w-full px-4 py-3 border rounded-md mb-4 focus:outline-none focus:border-accent"
+    />
+
+    <button
+      onclick="loginAdmin()"
+      class="w-full bg-accent text-white py-3 rounded-md font-semibold hover:opacity-90"
+    >
+      Login
+    </button>
+
+    <p id="errorMsg" class="text-red-500 text-sm mt-4 hidden">
+      Invalid password
+    </p>
+  </div>
+
+  <script src="./admin-login.js"></script>
+</body>
+</html>
